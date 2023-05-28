@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Details</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Student Details</h1>
+
+  <h2>Add New Student</h2>
+  <form id="studentForm">
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" required>
+
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" required>
+
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" required>
+
+    <label for="parentName">Parent's Name:</label>
+    <input type="text" id="parentName" required>
+
+    <label for="address">Address:</label>
+    <input type="text" id="address" required>
+
+    <label for="city">City:</label>
+    <input type="text" id="city" required>
+
+    <label for="phone">Phone Number:</label>
+    <input type="text" id="phone" required>
+
+    <button type="submit">Add Student</button>
+  </form>
+
+  <h2>Student List</h2>
+  <table id="studentTable">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Date of Birth</th>
+        <th>Parent's Name</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>Phone Number</th>
+      </tr>
+    </thead>
+    <tbody id="studentTableBody">
+    </tbody>
+  </table>
+
+  <script>
+    // Get form and table references
+    const form = document.getElementById('studentForm');
+    const tableBody = document.getElementById('studentTableBody');
+
+    // Add event listener for form submission
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // Retrieve form field values
+      const firstName = document.getElementById('firstName').value;
+      const lastName = document.getElementById('lastName').value;
+      const dob = document.getElementById('dob').value;
+      const parentName = document.getElementById('parentName').value;
+      const address = document.getElementById('address').value;
+      const city = document.getElementById('city').value;
+      const phone = document.getElementById('phone').value;
+
+      // Create a new row in the table
+      const newRow = tableBody.insertRow();
+
+      // Populate the row with data
+      newRow.insertCell().textContent = firstName;
+      newRow.insertCell().textContent = lastName;
+      newRow.insertCell().textContent = dob;
+      newRow.insertCell().textContent = parentName;
+      newRow.insertCell().textContent = address;
+      newRow.insertCell().textContent = city;
+      newRow.insertCell().textContent = phone;
+
+      // Reset form fields
+      form.reset();
+    });
+  </script>
+</body>
+</html>
